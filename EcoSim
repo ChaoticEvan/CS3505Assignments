@@ -1,0 +1,4 @@
+void runSimulation(int numOfRabbits, int numOfFoxes)
+{
+
+}
