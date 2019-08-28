@@ -7,6 +7,7 @@ void updatePopulations(double g, double p, double c, double m, double K, double&
 void runSimulation(int iterations, double rabbits, double foxes);
 void plotCharacter(int number, char c);
 void plotPopulations(double numOfRabbits, double numOfFoxes, double factor);
+int& incrementCounter(int& counter);
 
 int main()
 {
@@ -35,17 +36,28 @@ int main()
 
 void updatePopulations(double g, double p, double c, double m, double K, double& numRabbits, double& numFoxes)
 {
+  double rabbitChange = (g * numRabbits) * (1 - numRabbits/K) - (p * numRabbits * numFoxes);
+  double foxChange = (c * p * numRabbits * numFoxes) - (m * numRabbits);
 
+  numRabbits += rabbitChange;
+  numFoxes += numFoxes;
 }
 
 void runSimulation(int iterations, double rabbits, double foxes)
 {
+  plotPopulations(rabbits, foxes, 0.5);
 
+  int i = iterations;
+  for (i; i > 0; i--)
+  {
+    updatePopulations(0.2, 0.0022, 0.6, 0.2, 1000, rabbits, foxes);
+    plotPopulations(rabbits, foxes, 0.1);
+  }
 }
 
 void plotCharacter(int number, char c)
 {
-  for(int i = 1; i < number; i++)
+  for(int i = 1; i < number; incrementCounter(i))
   {
     std::cout << " ";
   }
@@ -70,4 +82,7 @@ void plotPopulations(double numOfRabbits, double numOfFoxes, double factor)
 }
 
 
-void incrementCounter()
+int& incrementCounter(int& counter)
+{
+  counter += 1;
+}
