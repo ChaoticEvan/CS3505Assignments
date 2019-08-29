@@ -90,7 +90,7 @@ void runSimulation(int iterations, double rabbits, double foxes)
 */
 void plotCharacter(int number, char c)
 {
-  for(int i = 1; i < number; incrementCounter(&i))
+  for(int i = 0; i < number; incrementCounter(&i))
   {
     std::cout << " ";
   }
