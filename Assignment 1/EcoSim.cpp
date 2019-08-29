@@ -86,7 +86,7 @@ void runSimulation(int iterations, double rabbits, double foxes)
 */
 void plotCharacter(int number, char c)
 {
-  for(int i = 1; i < number; incrementCounter(i*))
+  for(int i = 1; i < number; incrementCounter(&i))
   {
     std::cout << " ";
   }
@@ -121,5 +121,5 @@ void plotPopulations(double numOfRabbits, double numOfFoxes, double factor)
 */
 void incrementCounter(int* counter)
 {
-  counter += 1;
+  *counter += 1;
 }
