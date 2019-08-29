@@ -72,7 +72,7 @@ void runSimulation(int iterations, double rabbits, double foxes)
     // Error checking
     if(rabbits < 0 || foxes < 0)
     {
-      std::cerr << "Rabbit or fox population dropped below 0" << '\n';
+      std::cerr << "ERROR: Did not finish graph. Rabbit or fox population dropped below 0" << '\n';
       return;
     }
 
