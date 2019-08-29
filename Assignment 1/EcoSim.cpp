@@ -93,6 +93,11 @@ void plotCharacter(int number, char c)
 {
   for(int i = 0; i < number; incrementCounter(&i))
   {
+    if(number < 1)
+    {
+      break;
+    }
+
     std::cout << " ";
   }
 
@@ -105,19 +110,21 @@ void plotCharacter(int number, char c)
 */
 void plotPopulations(double numOfRabbits, double numOfFoxes, double factor)
 {
-  if(std::abs (numOfRabbits - numOfFoxes) * factor < 1)
+  int rabbitSpaces = numOfRabbits * factor;
+  int foxSpaces = numOfFoxes * factor;
+  if(rabbitSpaces == foxSpaces)
   {
-    plotCharacter(numOfRabbits * factor, '*');
+    plotCharacter(rabbitSpaces, '*');
   }
   else if(numOfRabbits < numOfFoxes)
   {
-    plotCharacter(numOfRabbits * factor + 1, 'r');
-    plotCharacter(((numOfFoxes - numOfRabbits) * factor) + 1, 'F');
+    plotCharacter(numOfRabbits * factor, 'r');
+    plotCharacter(((numOfFoxes - numOfRabbits) * factor), 'F');
   }
   else
   {
-    plotCharacter(numOfFoxes * factor + 1, 'F');
-    plotCharacter(((numOfRabbits - numOfFoxes) * factor) + 1, 'r');
+    plotCharacter(numOfFoxes * factor, 'F');
+    plotCharacter(((numOfRabbits - numOfFoxes) * factor), 'r');
   }
 
 }
