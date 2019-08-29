@@ -93,7 +93,7 @@ void plotCharacter(int number, char c)
 {
   for(int i = 0; i < number; incrementCounter(&i))
   {
-    if(number < 1)
+    if(number < 1.0)
     {
       break;
     }
@@ -119,12 +119,12 @@ void plotPopulations(double numOfRabbits, double numOfFoxes, double factor)
   else if(numOfRabbits < numOfFoxes)
   {
     plotCharacter(numOfRabbits * factor, 'r');
-    plotCharacter(((numOfFoxes - numOfRabbits) * factor), 'F');
+    plotCharacter(((numOfFoxes - numOfRabbits) * factor - 1), 'F');
   }
   else
   {
     plotCharacter(numOfFoxes * factor, 'F');
-    plotCharacter(((numOfRabbits - numOfFoxes) * factor), 'r');
+    plotCharacter(((numOfRabbits - numOfFoxes) * factor - 1), 'r');
   }
 
 }
