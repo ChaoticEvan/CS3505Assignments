@@ -36,21 +36,34 @@ int main()
 
 void updatePopulations(double g, double p, double c, double m, double K, double& numRabbits, double& numFoxes)
 {
-  double rabbitChange = (g * numRabbits) * (1 - numRabbits/K) - (p * numRabbits * numFoxes);
-  double foxChange = (c * p * numRabbits * numFoxes) - (m * numRabbits);
+  double rabbitChange = g * numRabbits * (1 - numRabbits/K) - p * numRabbits * numFoxes;
+  double foxChange = c * p * numRabbits * numFoxes - m * numFoxes;
+
+  // std::cout << "Rabbit Change = " << rabbitChange << '\n';
+  // std::cout << "Fox Change = " << foxChange << '\n';
+
 
   numRabbits += rabbitChange;
-  numFoxes += numFoxes;
+  numFoxes += foxChange;
+  //
+  // std::cout << "Rabbit num = " << numRabbits << '\n';
+  // std::cout << "Fox num = " << numFoxes << '\n';
 }
 
 void runSimulation(int iterations, double rabbits, double foxes)
 {
-  plotPopulations(rabbits, foxes, 0.5);
+  plotPopulations(rabbits, foxes, 0.1);
 
   int i = iterations;
   for (i; i > 0; i--)
   {
-    updatePopulations(0.2, 0.0022, 0.6, 0.2, 1000, rabbits, foxes);
+    updatePopulations(0.2, 0.0022, 0.6, 0.2, 1000.0, rabbits, foxes);
+    if(rabbits < 0 || foxes < 0)
+    {
+      std::cerr << "Rabbit or fox population dropped below 0" << '\n';
+      return;
+    }
+
     plotPopulations(rabbits, foxes, 0.1);
   }
 }
