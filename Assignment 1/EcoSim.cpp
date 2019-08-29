@@ -62,6 +62,8 @@ void updatePopulations(double g, double p, double c, double m, double K, double&
 void runSimulation(int iterations, double rabbits, double foxes)
 {
   plotPopulations(rabbits, foxes, 0.1);
+  std::cout << endl;
+
 
   // Loop through iterations and update/print the population numbers.
   int i = iterations;
@@ -77,6 +79,8 @@ void runSimulation(int iterations, double rabbits, double foxes)
     }
 
     plotPopulations(rabbits, foxes, 0.1);
+    std::cout << endl;
+
   }
 }
 
@@ -111,7 +115,6 @@ void plotPopulations(double numOfRabbits, double numOfFoxes, double factor)
     plotCharacter(((numOfRabbits - numOfFoxes) * factor) + 1, 'r');
   }
 
-  std::cout << endl;
 }
 
 
