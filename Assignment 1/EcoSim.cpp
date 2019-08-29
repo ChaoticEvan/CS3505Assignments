@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <cmath>
 using namespace std;
 
 void updatePopulations(double g, double p, double c, double m, double K, double& numRabbits, double& numFoxes);
@@ -104,7 +105,11 @@ void plotCharacter(int number, char c)
 */
 void plotPopulations(double numOfRabbits, double numOfFoxes, double factor)
 {
-  if(numOfRabbits < numOfFoxes)
+  if(std::abs (numOfRabbits - numOfFoxes) * factor < 1)
+  {
+    plotCharacter(numOfRabbits * factor, '*');
+  }
+  else if(numOfRabbits < numOfFoxes)
   {
     plotCharacter(numOfRabbits * factor + 1, 'r');
     plotCharacter(((numOfFoxes - numOfRabbits) * factor) + 1, 'F');
