@@ -13,7 +13,7 @@ void updatePopulations(double g, double p, double c, double m, double K, double&
 void runSimulation(int iterations, double rabbits, double foxes);
 void plotCharacter(int number, char c);
 void plotPopulations(double numOfRabbits, double numOfFoxes, double factor);
-int& incrementCounter(int& counter);
+void incrementCounter(int* counter);
 
 /*
   Main entry point for the program that gets the initial population
@@ -86,7 +86,7 @@ void runSimulation(int iterations, double rabbits, double foxes)
 */
 void plotCharacter(int number, char c)
 {
-  for(int i = 1; i < number; incrementCounter(i))
+  for(int i = 1; i < number; incrementCounter(i*))
   {
     std::cout << " ";
   }
@@ -119,7 +119,7 @@ void plotPopulations(double numOfRabbits, double numOfFoxes, double factor)
   Counter incrementer for practiving pass by reference
   as opposed to pass by value
 */
-int& incrementCounter(int& counter)
+void incrementCounter(int* counter)
 {
   counter += 1;
 }
