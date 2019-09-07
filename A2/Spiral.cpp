@@ -11,14 +11,14 @@ private:
   double _cenX, _cenY, _startRad, _startAng;
   double textX, textY, textAng;
   HPDF_Doc pdf;
+  HaruPDF hp;
 public:
   Spiral(double centerX, double centerY, double startRad, double startAng) : _cenX(centerX), _cenY(centerY), _startRad(startRad), _startAng(startAng)
   {
-    HaruPDF hp;
     pdf = hp.createPDF(centerX, centerY);
   }
 
-  Spiral& operator++()
+  Spiral& operator++(int i)
   {
     return *this;
   }
@@ -36,5 +36,10 @@ public:
   double gettextAngle()
   {
     return textAng;
+  }
+
+  void writeChar(char* c)
+  {
+    hp.writeChar(c);
   }
 };

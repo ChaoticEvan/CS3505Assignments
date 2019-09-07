@@ -31,7 +31,7 @@ public:
     return pdf;
   }
 
-  void writeChar(char text)
+  void writeChar(char* text)
   {
     float rad1, rad2, angle2;
     // Place characters one at a time on the page.
@@ -61,7 +61,7 @@ public:
                             x, y);
 
     // C-style strings are null-terminated. The last character must a 0.
-    buf[0] = text; // The character to display
+    buf[0] = *text; // The character to display
     buf[1] = 0;
     HPDF_Page_ShowText (page, buf);
     angle2 -= 10.0; // change the angle around the circle
