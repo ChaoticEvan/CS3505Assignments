@@ -3,13 +3,16 @@
 
 class Spiral{
 private:
-  double _cenX, _cenY, _startRad, _startAng;
+  double _cenX, _cenY, radius;
   double textX, textY, textAng;
-  HPDF_Doc pdf;
+  float rad1, rad2;
+  HaruPDF hp;
 public:
-  Spiral(double centerX, double centerY, double startRad, double startAng);
+  Spiral(double centerX, double centerY, double startRad, double textAng);
   Spiral& operator++();
   double getX();
   double getY();
   double gettextAngle();
+  void writeChar(char c);
+  void savePDF();
 };

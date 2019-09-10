@@ -15,7 +15,7 @@ private:
   float rad1, rad2;
   HaruPDF hp;
 public:
-  Spiral(double centerX, double centerY, double startRad, double startAng) : _cenX(centerX), _cenY(centerY), radius(startRad), textAng(startAng)
+  Spiral(double centerX, double centerY, double startRad, double textAng) : _cenX(centerX), _cenY(centerY), radius(startRad), textAng(textAng)
   {
     hp.createPDF(centerX, centerY);
   }

@@ -11,7 +11,6 @@ using namespace std;
 class HaruPDF
 {
 private:
-  const char* SAMP_TXT = "Hello there. General Kenobi!";
   HPDF_Page page;
   HPDF_Doc pdf;
   double _cenX, _cenY;
@@ -63,7 +62,7 @@ public:
 
     /* save the document to a file */
     HPDF_SaveToFile (pdf, fname);
-    std::cout << "saved PDf to " << fname << std::endl;
+
     /* clean up */
     HPDF_Free (pdf);
   }
