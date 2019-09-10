@@ -56,7 +56,7 @@ public:
 
   void savePDF()
   {
-    char fname[256] = "./stringPDF.pdf";
+    char fname[256] = "./spiralPDF.pdf";
 
     HPDF_Page_EndText (page);
 
