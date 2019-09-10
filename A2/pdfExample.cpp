@@ -17,7 +17,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <iostream>
 #include "hpdf.h"
+using namespace std;
 
 // argc is the number of arguments. Argv is an array of character arrays, or C-style strings.
 // If you call the program like ./pdfExample "Hello", then argv[1] would contain "Hello\0".
@@ -95,11 +97,10 @@ int main (int argc, char **argv)
     /* save the document to a file */
     HPDF_SaveToFile (pdf, fname);
 
+    std::cout << "saved file to "  << fname  << '\n';
+
     /* clean up */
     HPDF_Free (pdf);
 
     return 0;
 }
-
-
-

@@ -1,15 +1,21 @@
 #include "Spiral.cpp"
+using namespace std;
 
-double const centerX = 250.0, centerY = 250.0, startRad = 10.0, startAng = 0.0;
+double const centerX = 210.0, centerY = 300.0, startRad = 150.0, startAng = 180.0;
 
-int main (int argc, char **argv)
+int main (int argc, char *argv[])
 {
   Spiral spiral(centerX, centerY, startRad, startAng);
 
-  for(int i = 0; i < strlen(argv); i++)
+  for(int i = 0; argv[1][i] != '\0'; i++)
   {
+    char letter = argv[1][i];
+
+    spiral.writeChar(letter);
     spiral++;
-    spiral.writeChar(argv[i]);
   }
 
+  spiral.savePDF();
+
+  return -99;
 }
