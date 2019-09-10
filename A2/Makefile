@@ -1,6 +1,6 @@
 CC = g++
-INCLIBDIR = ./libharu/include
-SRCLIBDIR = ./libharu/src/
+INCLIBDIR = $(LIBHARU)/include
+SRCLIBDIR = $(LIBHARU)/src/
 
 LIBHARU = ./libharu
 
@@ -10,7 +10,7 @@ spiralPDF : spiralPDF.o Spiral.o HaruPDF.o Spiral.cpp
 spiralPDF.o : Spiral.o HaruPDF.o Spiral.cpp
 	$(CC) -c spiralPDF.cpp -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
 
-HaruPDF.o : $(INCLIBDIR)/hpdf.h
+HaruPDF.o : $(INCLIBDIR)/hpdf.h Spiral.cpp Spiral.o
 	$(CC) -c HaruPDF.cpp -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
 
 Spiral.o : Spiral.cpp HaruPDF.o
