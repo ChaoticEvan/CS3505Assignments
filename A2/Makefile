@@ -10,10 +10,10 @@ spiralPDF : spiralPDF.o Spiral.o HaruPDF.o Spiral.cpp
 spiralPDF.o : Spiral.o HaruPDF.o Spiral.cpp
 	$(CC) -c spiralPDF.cpp -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
 
-HaruPDF.o : $(INCLIBDIR)/hpdf.h HaruPDF.cpp
+HaruPDF.o : $(INCLIBDIR)/hpdf.h
 	$(CC) -c HaruPDF.cpp -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
 
-Spiral.o : HaruPDF.cpp
+Spiral.o : Spiral.cpp HaruPDF.o
 	$(CC) -c Spiral.cpp -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
 
 clean :

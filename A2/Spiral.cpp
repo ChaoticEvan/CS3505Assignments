@@ -15,12 +15,15 @@ private:
   float rad1, rad2;
   HaruPDF hp;
 public:
+
+
+
   Spiral(double centerX, double centerY, double startRad, double textAng) : _cenX(centerX), _cenY(centerY), radius(startRad), textAng(textAng)
   {
     hp.createPDF(centerX, centerY);
   }
 
-  Spiral& operator++(int i)
+  Spiral& operator++()
   {
     rad1 = (textAng - 90) / 180 * 3.141592;
     rad2 = textAng / 180 * 3.141592;
@@ -32,20 +35,28 @@ public:
 
     textAng -= 10;
     radius += 1.0;
+
     return *this;
   }
 
-  double getX()
+  Spiral operator++(int i)
+  {
+    Spiral result(*this);
+    ++(*this);
+    return *this;
+  }
+
+  double getTextX()
   {
     return textX;
   }
 
-  double getY()
+  double getTextY()
   {
     return textY;
   }
 
-  double gettextAngle()
+  double getTextAngle()
   {
     return textAng;
   }

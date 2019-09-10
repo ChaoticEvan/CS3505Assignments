@@ -1,5 +1,4 @@
-#include "hpdf.h"
-#include "HaruPDF.h"
+#include "HaruPDF.cpp"
 
 class Spiral{
 private:
@@ -10,9 +9,10 @@ private:
 public:
   Spiral(double centerX, double centerY, double startRad, double textAng);
   Spiral& operator++();
-  double getX();
-  double getY();
-  double gettextAngle();
+  Spiral operator++(int i);
+  double getTextX();
+  double getTextY();
+  double getTextAngle();
   void writeChar(char c);
   void savePDF();
 };

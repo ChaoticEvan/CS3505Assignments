@@ -7,7 +7,7 @@ int main (int argc, char *argv[])
 {
   if(argc == 1)
   {
-    std:cerr << "No argument provided." << std::endl;
+    std::cerr << "No argument provided." << std::endl;
     return -99;
   }
 
