@@ -1,7 +1,7 @@
 #include "Spiral.cpp"
 using namespace std;
 
-double const centerX = 210.0, centerY = 300.0, startRad = 150.0, startAng = 180.0;
+double const centerX = 210.0, centerY = 300.0, startRad = 100.0, startAng = 90.0;
 
 int main (int argc, char *argv[])
 {
@@ -11,8 +11,8 @@ int main (int argc, char *argv[])
   {
     char letter = argv[1][i];
 
-    spiral.writeChar(letter);
     spiral++;
+    spiral.writeChar(letter);
   }
 
   spiral.savePDF();

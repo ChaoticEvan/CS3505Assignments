@@ -31,7 +31,7 @@ public:
     textY = hp.getCenY() + sin(rad2) * radius;
 
     textAng -= 10;
-
+    radius += 1.0;
     return *this;
   }
 
