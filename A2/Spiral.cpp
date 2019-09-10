@@ -1,3 +1,8 @@
+/* File for plotting text on the pdf in the
+   spiral pattern.
+
+   By: Evan Voordeckers | u1087559 */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -5,8 +10,9 @@
 #include <iostream>
 #include "HaruPDF.cpp"
 
-using namespace std;
-
+/* Spiral class used for computing the
+   X and Y coordinates and angle of each
+  character for the spiral */
 class Spiral
 {
 private:
@@ -14,15 +20,21 @@ private:
   double textX, textY, textAng;
   float rad1, rad2;
   HaruPDF hp;
+
 public:
 
-
-
+  /* constructs a spiral object with
+     the given center x and y coordinates,
+     the starting radius, and the starting text
+     angle */
   Spiral(double centerX, double centerY, double startRad, double textAng) : _cenX(centerX), _cenY(centerY), radius(startRad), textAng(textAng)
   {
     hp.createPDF(centerX, centerY);
   }
 
+  /* increments the spiral's
+     coordinates and angles
+     for the next character to be plooted */
   Spiral& operator++()
   {
     rad1 = (textAng - 90) / 180 * 3.141592;
@@ -39,6 +51,9 @@ public:
     return *this;
   }
 
+  /* increments the spiral's
+     coordinates and angles
+     for the next character to be plooted */
   Spiral operator++(int i)
   {
     Spiral result(*this);
@@ -46,28 +61,29 @@ public:
     return *this;
   }
 
+  /* helper methods for calling
+     methods contained in our
+     facade file */
+  void writeChar(char c)
+  {
+    hp.writeChar(c, textX, textY, rad1, textAng);
+  }
+  void savePDF()
+  {
+    hp.savePDF();
+  }
+
+  // Getters for spiral's coordinates and angle
   double getTextX()
   {
     return textX;
   }
-
   double getTextY()
   {
     return textY;
   }
-
   double getTextAngle()
   {
     return textAng;
-  }
-
-  void writeChar(char c)
-  {
-    hp.writeChar(c, textX, textY, rad1, rad2, textAng);
-  }
-
-  void savePDF()
-  {
-    hp.savePDF();
   }
 };
