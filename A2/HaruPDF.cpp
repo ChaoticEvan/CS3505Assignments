@@ -9,23 +9,20 @@
 #include <math.h>
 #include <iostream>
 #include "hpdf.h"
+#include "HaruPDF.h"
 
 /* Facade class for the libharu library.
    Implements methods for easily creating a PDF,
    writing text, and saving the PDF */
-class HaruPDF
-{
-private:
-  HPDF_Page page;
-  HPDF_Doc pdf;
-  double _cenX, _cenY;
+  // HPDF_Page page;
+  // HPDF_Doc pdf;
+  // double _cenX, _cenY;
 
-public:
   /* Method for creating a PDF.
      Uses the two paramters as the center X,
      and center Y, respectively, coordinates
      for the spiral */
-  void createPDF(double centerX, double centerY)
+  void HaruPDF::createPDF(double centerX, double centerY)
   {
     _cenX = centerX;
     _cenY = centerY;
@@ -49,7 +46,7 @@ public:
   /* Method for writing a single character
      on the PDF at the x and y location given,
      and the rad1 and angle given */
-  void writeChar(char text, float x, float y, float rad1, float angle)
+  void HaruPDF::writeChar(char text, float x, float y, float rad1, float angle)
   {
     char buf[2];
 
@@ -68,7 +65,7 @@ public:
 
   /* Method for saving the PDF
      Saves to the filename "spiralPDF.pdf" */
-  void savePDF()
+  void HaruPDF::savePDF()
   {
     char fname[256] = "./spiralPDF.pdf";
 
@@ -82,7 +79,7 @@ public:
   }
 
   // Getters for center of spiral
-  double getCenX()
+  double HaruPDF::getCenX()
   {
     return _cenX;
   }
@@ -90,4 +87,3 @@ public:
   {
     return _cenY;
   }
-};

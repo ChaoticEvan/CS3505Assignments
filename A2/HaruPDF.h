@@ -6,6 +6,16 @@
 #include <iostream>
 #include "hpdf.h"
 
-void createPDF(double centerX, double centerY);
-void writeChar(char text, float x, float y, float rad1, float rad2, float angle);
-void savePDF();
+class HaruPDF
+{
+private:
+  HPDF_Page page;
+  HPDF_Doc pdf;
+  double _cenX, _cenY;
+public:
+  void createPDF(double centerX, double centerY);
+  void writeChar(char text, float x, float y, float rad1, float angle);
+  void savePDF();
+  double getCenX();
+  double getCenY();
+};
