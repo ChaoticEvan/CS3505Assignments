@@ -4,16 +4,16 @@ SRCLIBDIR = $(LIBHARU)/src/
 
 LIBHARU = ./libharu
 
-spiralPDF : spiralPDF.o
+spiralPDF : spiralPDF.o HaruPDF.o Spiral.o
 	$(CC) -o spiralPDF spiralPDF.cpp Spiral.cpp -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
 
-spiralPDF.o : Spiral.h
+spiralPDF.o : Spiral.o
 	$(CC) spiralPDF.cpp Spiral.cpp -o spiralPDF.o -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
 
-HaruPDF.o : $(INCLIBDIR)/hpdf.h HaruPDF.h
+HaruPDF.o : $(INCLIBDIR)/hpdf.h HaruPDF.o
 	$(CC) HaruPDF.cpp -o HaruPDF.o -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
 
-Spiral.o : Spiral.h HaruPDF.h
+Spiral.o : Spiral.o HaruPDF.o HaruPDF.cpp HaruPDF.h
 	$(CC) Spiral.cpp HaruPDF.cpp  -o Spiral.o -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
 
 clean :

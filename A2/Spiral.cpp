@@ -9,7 +9,7 @@
 #include <math.h>
 #include <iostream>
 #include "Spiral.h"
-#include "HaruPDF.h"
+#include "HaruPDF.cpp"
 /* Spiral class used for computing the
  X and Y coordinates and angle of each
 character for the spiral */
@@ -37,7 +37,6 @@ Spiral& Spiral::operator++()
 
   // The position of the character depends on the center point
 
-  hp();
   // plus the angle and the radius.
   textX = hp.getCenX() + cos(rad2) * radius;
   textY = hp.getCenY() + sin(rad2) * radius;

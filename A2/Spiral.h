@@ -1,5 +1,7 @@
 #ifndef SPIRAL_H
 #define SPIRAL_H
+#include "HaruPDF.h"
+
 class Spiral{
 private:
   double _cenX, _cenY, radius;
