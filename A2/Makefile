@@ -4,17 +4,17 @@ SRCLIBDIR = $(LIBHARU)/src/
 
 LIBHARU = ./libharu
 
-spiralPDF : spiralPDF.o Spiral.o HaruPDF.o Spiral.cpp HaruPDF.cpp
-	$(CC) -o spiralPDF spiralPDF.o -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
+spiralPDF : spiralPDF.o
+	$(CC) -o spiralPDF spiralPDF.cpp Spiral.cpp -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
 
-spiralPDF.o : Spiral.o HaruPDF.o Spiral.cpp HaruPDF.cpp
-	$(CC) -c spiralPDF.cpp -o spiralPDF.o -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
+spiralPDF.o : Spiral.h
+	$(CC) spiralPDF.cpp Spiral.cpp -o spiralPDF.o -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
 
-HaruPDF.o : $(INCLIBDIR)/hpdf.h Spiral.cpp
-	$(CC) -c HaruPDF.cpp -o HaruPDF.o -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
+HaruPDF.o : $(INCLIBDIR)/hpdf.h HaruPDF.h
+	$(CC) HaruPDF.cpp -o HaruPDF.o -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
 
-Spiral.o : Spiral.cpp HaruPDF.o
-	$(CC) -c Spiral.cpp -o Spiral.o -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
+Spiral.o : Spiral.h HaruPDF.h
+	$(CC) Spiral.cpp HaruPDF.cpp  -o Spiral.o -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
 
 clean :
 	rm spiralPDF *.o Spiral *.o HaruPDF* .o

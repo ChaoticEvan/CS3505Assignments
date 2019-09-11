@@ -9,76 +9,77 @@
 #include <math.h>
 #include <iostream>
 #include "Spiral.h"
-#include "HaruPDF.cpp"
-
+#include "HaruPDF.h"
 /* Spiral class used for computing the
-   X and Y coordinates and angle of each
-  character for the spiral */
-  double _cenX, _cenY, radius;
-  double textX, textY, textAng;
-  float rad1, rad2;
-  HaruPDF hp;
+ X and Y coordinates and angle of each
+character for the spiral */
+double _cenX, _cenY, radius;
+double textX, textY, textAng;
+float rad1, rad2;
+HaruPDF hp;
 
-  /* constructs a spiral object with
-     the given center x and y coordinates,
-     the starting radius, and the starting text
-     angle */
-  Spiral::Spiral(double centerX, double centerY, double startRad, double textAng) : _cenX(centerX), _cenY(centerY), radius(startRad), textAng(textAng)
-  {
-    hp.createPDF(centerX, centerY);
-  }
+/* constructs a spiral object with
+   the given center x and y coordinates,
+   the starting radius, and the starting text
+   angle */
+Spiral::Spiral(double centerX, double centerY, double startRad, double textAng) : _cenX(centerX), _cenY(centerY), radius(startRad), textAng(textAng)
+{
+  hp.createPDF(centerX, centerY);
+}
 
-  /* increments the spiral's
-     coordinates and angles
-     for the next character to be plooted */
-  Spiral& Spiral::operator++()
-  {
-    rad1 = (textAng - 90) / 180 * 3.141592;
-    rad2 = textAng / 180 * 3.141592;
+/* increments the spiral's
+   coordinates and angles
+   for the next character to be plooted */
+Spiral& Spiral::operator++()
+{
+  rad1 = (textAng - 90) / 180 * 3.141592;
+  rad2 = textAng / 180 * 3.141592;
 
-    // The position of the character depends on the center point
-    // plus the angle and the radius.
-    textX = hp.getCenX() + cos(rad2) * radius;
-    textY = hp.getCenY() + sin(rad2) * radius;
+  // The position of the character depends on the center point
 
-    textAng -= 10;
-    radius += 1.0;
+  hp();
+  // plus the angle and the radius.
+  textX = hp.getCenX() + cos(rad2) * radius;
+  textY = hp.getCenY() + sin(rad2) * radius;
 
-    return *this;
-  }
+  textAng -= 10;
+  radius += 1.0;
 
-  /* increments the spiral's
-     coordinates and angles
-     for the next character to be plooted */
-  Spiral Spiral::operator++(int i)
-  {
-    Spiral result(*this);
-    ++(*this);
-    return *this;
-  }
+  return *this;
+}
 
-  /* helper methods for calling
-     methods contained in our
-     facade file */
-  void Spiral::writeChar(char c)
-  {
-    hp.writeChar(c, textX, textY, rad1, textAng);
-  }
-  void Spiral::savePDF()
-  {
-    hp.savePDF();
-  }
+/* increments the spiral's
+   coordinates and angles
+   for the next character to be plooted */
+Spiral Spiral::operator++(int i)
+{
+  Spiral result(*this);
+  ++(*this);
+  return *this;
+}
 
-  // Getters for spiral's coordinates and angle
-  double Spiral::getTextX()
-  {
-    return textX;
-  }
-  double Spiral::getTextY()
-  {
-    return textY;
-  }
-  double Spiral::getTextAngle()
-  {
-    return textAng;
-  }
+/* helper methods for calling
+   methods contained in our
+   facade file */
+void Spiral::writeChar(char c)
+{
+  hp.writeChar(c, textX, textY, rad1, textAng);
+}
+void Spiral::savePDF()
+{
+  hp.savePDF();
+}
+
+// Getters for spiral's coordinates and angle
+double Spiral::getTextX()
+{
+  return textX;
+}
+double Spiral::getTextY()
+{
+  return textY;
+}
+double Spiral::getTextAngle()
+{
+  return textAng;
+}

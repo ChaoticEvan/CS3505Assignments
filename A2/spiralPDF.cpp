@@ -3,9 +3,8 @@
 
  By: Evan Voordeckers | u1087559 */
 
-#include "Spiral.cpp"
+#include "Spiral.h"
 using namespace std;
-
 double const centerX = 210.0, centerY = 300.0, startRad = 100.0, startAng = 0.0;
 
 /* Method that creates a file "spiralPDF.pdf"
@@ -16,7 +15,7 @@ int main (int argc, char *argv[])
   // Error checking
   if(argc == 1)
   {
-    cerr << "No argument provided." << endl;
+    std::cerr << "No argument provided." << std::endl;
     return -99;
   }
 

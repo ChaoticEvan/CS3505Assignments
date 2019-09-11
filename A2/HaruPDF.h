@@ -1,10 +1,11 @@
+#pragma once
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
 #include <string.h>
 #include <math.h>
 #include <iostream>
-#include "hpdf.h"
 
 class HaruPDF
 {
@@ -12,6 +13,7 @@ private:
   HPDF_Page page;
   HPDF_Doc pdf;
   double _cenX, _cenY;
+
 public:
   void createPDF(double centerX, double centerY);
   void writeChar(char text, float x, float y, float rad1, float angle);
