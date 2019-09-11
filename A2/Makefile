@@ -17,7 +17,7 @@ Spiral.o : Spiral.o HaruPDF.o HaruPDF.cpp HaruPDF.h
 	$(CC) -c Spiral.cpp -o Spiral.o -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
 
 clean :
-	rm spiralPDF *.o Spiral *.o HaruPDF* .o
+	rm spiralPDF.o Spiral.o HaruPDF.o
 
 test :
 	./spiralPDF "Hello there. General Kenobi! This text just needs to be long"

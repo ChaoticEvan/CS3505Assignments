@@ -25,6 +25,7 @@ HaruPDF hp;
 Spiral::Spiral(double centerX, double centerY, double startRad, double textAng) : _cenX(centerX), _cenY(centerY), radius(startRad), textAng(textAng)
 {
   hp.createPDF(centerX, centerY);
+  textX = startRad;
 }
 
 /* increments the spiral's
@@ -54,7 +55,7 @@ Spiral Spiral::operator++(int i)
 {
   Spiral result(*this);
   ++(*this);
-  return *this;
+  return result;
 }
 
 /* helper methods for calling
