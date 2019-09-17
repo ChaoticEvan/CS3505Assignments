@@ -11,13 +11,13 @@ spiralPDF.o : Spiral.o
 	$(CC) spiralPDF.cpp Spiral.cpp -o spiralPDF.o -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
 
 HaruPDF.o : $(INCLIBDIR)/hpdf.h HaruPDF.o
-	$(CC) HaruPDF.cpp -o HaruPDF.o -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
+	$(CC) -c HaruPDF.cpp -o HaruPDF.o -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
 
 Spiral.o : Spiral.o HaruPDF.o HaruPDF.cpp HaruPDF.h
-	$(CC) Spiral.cpp HaruPDF.cpp  -o Spiral.o -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
+	$(CC) -c Spiral.cpp -o Spiral.o -I$(INCLIBDIR) -L$(SRCLIBDIR) -lhpdfs
 
 clean :
-	rm spiralPDF *.o Spiral *.o HaruPDF* .o
+	rm spiralPDF.o Spiral.o HaruPDF.o
 
 test :
 	./spiralPDF "Hello there. General Kenobi! This text just needs to be long"
