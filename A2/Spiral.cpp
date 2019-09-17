@@ -9,7 +9,8 @@
 #include <math.h>
 #include <iostream>
 #include "Spiral.h"
-#include "HaruPDF.cpp"
+#include "HaruPDF.h"
+
 /* Spiral class used for computing the
  X and Y coordinates and angle of each
 character for the spiral */

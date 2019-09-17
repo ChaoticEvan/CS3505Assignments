@@ -1,5 +1,4 @@
-#ifndef SPIRAL_H
-#define SPIRAL_H
+#pragma once
 #include "HaruPDF.h"
 
 class Spiral{
@@ -18,4 +17,3 @@ public:
   void writeChar(char c);
   void savePDF();
 };
-#endif
