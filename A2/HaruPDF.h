@@ -1,5 +1,3 @@
-#pragma once
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
@@ -7,7 +5,9 @@
 #include <math.h>
 #include <iostream>
 #include "hpdf.h"
-
+ 
+#ifndef HARU_PDF_H
+#define HARU_PDF_H
 class HaruPDF
 {
 private:
@@ -22,3 +22,4 @@ public:
   double getCenX();
   double getCenY();
 };
+#endif /* end of include guard: HARU_PDF_H */
