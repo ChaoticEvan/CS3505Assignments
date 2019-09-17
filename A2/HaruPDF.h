@@ -1,4 +1,5 @@
-#pragma once
+#ifndef HARU_PDF_H
+#define HARU_PDF_H
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -22,3 +23,4 @@ public:
   double getCenX();
   double getCenY();
 };
+#endif // end guard for HARU_PDF_H
