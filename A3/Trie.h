@@ -17,6 +17,7 @@ public:
   Trie(const Trie& trie);
   Trie& operator=(const Trie& other);
   void addAWord(std::string str);
+  void addAWordRec(std::string str, int idx, Node* curr);
   bool isAWord(std::string str);
   vector<std::string> allWordsStartingWithPrefix(std::string str);
 };

@@ -3,11 +3,15 @@
 #include "Node.h"
 using namespace std;
 
+Node::Node()
+{
+  branches[26];
 
-typedef std::vector<Node> branches;
-bool isWord;
-
-Node::Node() = default;
+  for(int i = 0; i < 26; i++)
+  {
+    branches[i] = NULL;
+  }
+}
 
 bool Node::getIsWord()
 {
@@ -19,7 +23,12 @@ void Node::setIsWord(bool b)
   isWord = b;
 }
 
-std::vector<Node>* Node::getBranches()
+Node& Node::operator=(const Node& other)
 {
-  return &branches;
+  for(int i = 0; i < 26; i++)
+  {
+    branches[i] = other.branches[i];
+  }
+  isWord = other.isWord;
+  return *this;
 }

@@ -6,11 +6,7 @@
 using namespace std;
 
 Node root();
-Trie::Trie()
-{
-  Node root();
-
-}
+Trie::Trie() = default;
 
 Trie::~Trie()
 {
@@ -28,23 +24,26 @@ Trie& Trie::operator=(const Trie& other)
 
 void Trie::addAWord(std::string str)
 {
-  Node curr = root;
+    addAWordRec(str, 0, &root);
+}
 
-  std::vector<Node> test(26);
-  curr.getBranches();
-
-  for(int i = 0; i < str.length(); i++)
+void Trie::addAWordRec(std::string str, int idx, Node* curr)
+{
+  if(idx == str.length())
   {
-    int idx = str.at(i) - 97;
-
-    if(!curr.getBranches()[idx])
-    {
-      curr.getBranches()[idx]();
-    }
-
-    curr = curr.getBranches()[idx];
-
+    return;
   }
+
+  int charIdx = str.at(idx) - 97;
+
+  if(!curr->branches[idx])
+  {
+    Node* node;
+    curr->branches[idx] = node;
+  }
+
+  idx++;
+  addAWordRec(str, idx, curr->branches[idx]);
 }
 
 bool Trie::isAWord(std::string str)

@@ -7,14 +7,14 @@ using namespace std;
 
 class Node
 {
-private:
-  bool isWord;
-  typedef std::vector<Node> branches;
 public:
+  Node* branches [26];
+  bool isWord;
   Node();
-  std::vector<Node>* getBranches();
   bool getIsWord();
   void setIsWord(bool b);
+  Node& operator=(const Node& other);
 };
+
 
 #endif /* end of include guard: NODE_h */
