@@ -9,7 +9,7 @@ Node::Node()
 
   for(int i = 0; i < 26; i++)
   {
-    branches[i] = NULL;
+    branches[i] = nullptr;
   }
 }
 

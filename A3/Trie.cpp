@@ -36,14 +36,14 @@ void Trie::addAWordRec(std::string str, int idx, Node* curr)
 
   int charIdx = str.at(idx) - 97;
 
-  if(!curr->branches[idx])
+  if(!curr->branches[charIdx])
   {
-    Node* node;
-    curr->branches[idx] = node;
+    Node *node = new Node();
+    curr->branches[charIdx] = node;
   }
 
   idx++;
-  addAWordRec(str, idx, curr->branches[idx]);
+  addAWordRec(str, idx, curr->branches[charIdx]);
 }
 
 bool Trie::isAWord(std::string str)
