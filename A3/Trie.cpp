@@ -88,6 +88,10 @@ vector<std::string> Trie::allWordsStartingWithPrefixRec(std::string str, int idx
   if(idx == str.length())
   {
     findWords(&result, curr);
+    if(isAWord(str))
+    {
+      result.push_back(str);
+    }
     return result;
   }
 
