@@ -31,6 +31,7 @@ void Trie::addAWordRec(std::string str, int idx, Node* curr)
 {
   if(idx == str.length())
   {
+    curr->setIsWord(true);
     return;
   }
 
@@ -48,7 +49,26 @@ void Trie::addAWordRec(std::string str, int idx, Node* curr)
 
 bool Trie::isAWord(std::string str)
 {
-  return false;
+  return isAWordRec(str, 0, &root);
+}
+
+bool Trie::isAWordRec(std::string str, int idx, Node* curr)
+{
+  if(idx == str.length())
+  {
+    return true;
+    //return curr->getIsWord();
+  }
+
+  int charIdx = str.at(idx) - 97;
+
+  if(!curr->branches[charIdx])
+  {
+    return false;
+  }
+
+  idx++;
+  isAWordRec(str, idx, curr->branches[charIdx]);
 }
 
 vector<std::string> allWordsStartingWithPrefix(std::string str)

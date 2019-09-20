@@ -19,6 +19,7 @@ public:
   void addAWord(std::string str);
   void addAWordRec(std::string str, int idx, Node* curr);
   bool isAWord(std::string str);
+  bool isAWordRec(std:: string str, int idx, Node* curr);
   vector<std::string> allWordsStartingWithPrefix(std::string str);
 };
 

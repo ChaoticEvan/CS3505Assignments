@@ -5,7 +5,7 @@ using namespace std;
 
 Node::Node()
 {
-  branches[26];
+  isWord = false;
 
   for(int i = 0; i < 26; i++)
   {
