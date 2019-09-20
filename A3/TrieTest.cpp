@@ -44,6 +44,18 @@ int main(int argc, char *argv[])
     else
     {
       std::cout << currLine << " is not found, did you mean:" << std::endl;
+      std::vector<std::string> v = test->allWordsStartingWithPrefix(currLine);
+      if(v.size() == 0)
+      {
+        std::cout << "   no alternatives found" << '\n';
+      }
+      else
+      {
+        for(int i = 0; i < v.size(); i++)
+        {
+          std::cout << "   " << v[i] << '\n';
+        }
+      }
     }
   }
 }
